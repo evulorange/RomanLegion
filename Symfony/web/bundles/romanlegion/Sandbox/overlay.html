@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="vendor/jquery-ui/css/redmond/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+	<script src="vendor/jquery-ui/js/jquery-1.9.1.js"></script>
+	<script src="vendor/jquery-ui/js/jquery-ui-1.10.3.custom.js"></script>
+        
+        <script type="text/javascript" src="vendor/zoomooz/src/js/jquery.zoomooz-helpers.js"></script>
+        <script type="text/javascript" src="vendor/zoomooz/src/js/jquery.zoomooz-anim.js"></script>
+        <script type="text/javascript" src="vendor/zoomooz/src/js/jquery.zoomooz-core.js"></script>
+        <script type="text/javascript" src="vendor/zoomooz/src/js/jquery.zoomooz-zoomTarget.js"></script>
+        <script type="text/javascript" src="vendor/zoomooz/src/js/jquery.zoomooz-zoomButton.js"></script>
+        <script type="text/javascript" src="vendor/zoomooz/src/js/jquery.zoomooz-zoomContainer.js"></script>
+        <script type="text/javascript" src="vendor/zoomooz/src/js/purecssmatrix.js"></script>
+        <script type="text/javascript" src="vendor/zoomooz/src/js/sylvester.src.stripped.js"></script>
+        
+        <style type="text/css">@import "vendor/jquery-svg/jquery.svg.css";</style>
+        <script type="text/javascript" src="vendor/jquery-svg/jquery.svg.js"></script>
+        
+        <style>
+        #draggable { 
+            width: 500px; height: 500px; padding: 0.5em; 
+            overflow: hidden;
+        }
+        </style>
+        <script>
+            $(document).ready(function() {
+                
+        $(function() {
+//            $( "#draggable" ).draggable();
+            $( ".draggable-image" ).draggable();
+        });
+        
+        $('#svg-builder').svg();
+        var svg = $('#svg-builder').svg('get');
+        
+        svg.describe('This graphic links to an external image'); 
+        var img = svg.image(100, 50, 200, 200, 'blank.PNG'); 
+        svg.title(img, 'My image'); 
+        svg.image(130, 100, 120, 120, 'county_names.PNG'); 
+            });
+        </script>
+    </head>
+    <body>
+        orange
+        <div class="zoomViewport">
+            pear
+            <div class="zoomContainer">
+                apple
+                <div id="draggable" class="ui-widget-content zoomTarget">
+                    sdf
+                    <div class="draggable-image" id="svg-builder"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
