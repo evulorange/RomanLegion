@@ -2,7 +2,7 @@ web1: #component type & number
   name: romanlegion            #component settings
   shared_writable_dirs:
     - Symfony/app/logs
-  document_root: Symfony/web
+  document_root: Symfony
   php_version: 5.4.14
   php_extensions:
     - mysql
