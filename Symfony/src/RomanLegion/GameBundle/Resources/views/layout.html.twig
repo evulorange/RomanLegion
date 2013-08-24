@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title 'Roman Legion' %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Le styles -->
+    <link href="{{ asset('bundles/romanlegion/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/romanlegion/css/custom-theme/jquery-ui-1.10.0.custom.css') }}" rel="stylesheet" />
+    <link type="text/css" href="{{ asset('bundles/romanlegion/assets/css/font-awesome.min.css') }}" rel="stylesheet" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="{{ asset('bundles/romanlegion/assets/css/font-awesome-ie7.min.css') }}">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/romanlegion/css/custom-theme/jquery.ui.1.10.0.ie.css') }}"/>
+    <![endif]-->
+    <link href="{{ asset('bundles/romanlegion/assets/css/docs.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/romanlegion/assets/js/google-code-prettify/prettify.css') }}" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('bundles/romanlegion/assets/ico/apple-touch-icon-144-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('bundles/romanlegion/assets/ico/apple-touch-icon-114-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('bundles/romanlegion/assets/ico/apple-touch-icon-72-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('bundles/romanlegion/assets/ico/apple-touch-icon-57-precomposed.png') }}">
+    <link rel="shortcut icon" href="{{ asset('bundles/romanlegion/assets/ico/favicon.png') }}">
+    
+    {% block extra_styles '' %}
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+
+{% block body %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">The Roman Legion</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="#">Home</a>
+                        </li>
+                        <li><a href="#">LOGIN</a></li>
+                        <li><a href="{{ path('_census_list') }}">Census</a></li>
+                        <li><a href="{{ path('_senatus_list') }}">Senatus</a></li>
+                        <li><a href="{{ path('_garrison_mapUnits') }}">Garrison</a></li>
+                        <li><a href="{{ path('_market_available') }}">Market</a></li>
+                        <li><a href="#">Religion</a></li>
+                        <li><a href="#">Treasury</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}
+    <!-- Subhead
+    ================================================== -->
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <h1>The Roman Online Gaming Society</h1>
+        </div>
+    </header>
+    {% endblock %}
+
+{% endblock %}
+{% block footer %}
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                The Roman Legion &copy; The Roman Online Gaming Society, 2013.
+            </p>
+            <ul class="footer-links">
+                <li><a href="#">FAQ</a></li>
+                <li class="muted">&middot;</li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('bundles/romanlegion/assets/js/jquery-1.9.0.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/romanlegion/assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/romanlegion/assets/js/jquery-ui-1.10.0.custom.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/romanlegion/assets/js/google-code-prettify/prettify.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/romanlegion/assets/js/docs.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/romanlegion/third-party/jqGrid/js/i18n/grid.locale-en.js') }}"></script>
+    <script src="{{ asset('bundles/romanlegion/third-party/jqGrid/js/jquery.jqGrid.min.js') }}"></script> 
+    
+    {% block extra_scripts '' %}
+{% endblock %}
+
+</body>
+</html>

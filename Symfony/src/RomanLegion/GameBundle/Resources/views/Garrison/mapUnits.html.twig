@@ -1,0 +1,138 @@
+{% extends "RomanLegionGameBundle::layout.html.twig" %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{{ asset('bundles/romanlegion/third-party/jqGrid/css/ui.jqgrid.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/romanlegion/third-party/jqGrid/jqGrid.overrides.css') }}"> 
+    <style type="text/css">@import "{{ asset('bundles/romanlegion/third-party/jquery-svg/jquery.svg.css') }}";</style>
+    <style>
+    #draggable { 
+        width: 70%; height: 300px; padding: 0.5em; 
+        overflow: hidden;
+    }
+    </style>
+{% endblock %}
+
+{% block content_header '' %}
+
+{% block content %}
+<br />
+<div class="container zoomViewport">
+    <div class="row">
+        <div class="span2">
+            <div id="layers">
+                <input type="checkbox" id="map_blank" /><label for="map_blank">Nations</label>
+                <input type="checkbox" id="map_county_names" /><label for="map_county_names">Cities</label>
+            </div>
+        </div>
+        <div class="span10">
+            <div class="zoomContainer">
+                <div id="draggable" class="ui-widget-content zoomTarget">
+                    <div class="draggable-image" id="svg-builder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <table id="units"></table>
+    <div id="unitsPager"></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+$("#units").jqGrid({
+    data: [
+        {
+            name: 'Dev garrison',
+            type: 'devtype',
+            mentality: 'determined',
+            experience: 'seasoned',
+            location: 'Dev location',
+            size: 98,
+            player: 'Jonathan'
+        }
+    ],
+    datatype: "local",
+    height: 250,
+    rowNum: 10,
+    rowList: [10,20,30],
+    colNames:['Name', 'Type', 'Mentality', 'Experience', 'Location', 'Size', 'Player'],
+    colModel:[
+        {name:'name',index:'name', width:150},
+        {name:'type',index:'type', width:50},
+        {name:'mentality',index:'mentality', width:100},
+        {name:'experience',index:'experience', width:100},
+        {name:'location',index:'location', width:200},
+        {name:'size',index:'size', width:100, sorttype:"int",search:true},
+        {name:'player',index:'player', width:200}
+    ],
+    pager: "#unitsPager",
+    viewrecords: true,
+    caption: "Military Units",
+    hidegrid:false,
+    altRows: true                
+});
+</script>
+<script type="text/javascript" src="{{ asset('bundles/romanlegion/third-party/zoomooz/src/js/jquery.zoomooz-helpers.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/romanlegion/third-party/zoomooz/src/js/jquery.zoomooz-anim.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/romanlegion/third-party/zoomooz/src/js/jquery.zoomooz-core.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/romanlegion/third-party/zoomooz/src/js/jquery.zoomooz-zoomTarget.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/romanlegion/third-party/zoomooz/src/js/jquery.zoomooz-zoomButton.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/romanlegion/third-party/zoomooz/src/js/jquery.zoomooz-zoomContainer.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/romanlegion/third-party/zoomooz/src/js/purecssmatrix.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/romanlegion/third-party/zoomooz/src/js/sylvester.src.stripped.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('bundles/romanlegion/third-party/jquery-svg/jquery.svg.js') }}"></script><script>
+(function( $ ){
+//plugin buttonset vertical
+$.fn.buttonsetv = function() {
+  $(':radio, :checkbox', this).wrap('<div style="margin: 1px"/>');
+  $(this).buttonset();
+  $('label:first', this).removeClass('ui-corner-left').addClass('ui-corner-top');
+  $('label:last', this).removeClass('ui-corner-right').addClass('ui-corner-bottom');
+  mw = 0; // max witdh
+  $('label', this).each(function(index){
+     w = $(this).width();
+     if (w > mw) mw = w; 
+  })
+  $('label', this).each(function(index){
+    $(this).width(mw);
+  })
+};
+})( jQuery );
+    
+$(document).ready(function() {
+
+    $(function() {
+//            $( "#draggable" ).draggable();
+        $( ".draggable-image" ).draggable();
+    });
+
+    $('#layers').buttonsetv();
+
+    $('#svg-builder').svg();
+    var svg = $('#svg-builder').svg('get');
+    svg.describe('This graphic links to an external image'); 
+    
+    var mapLayers = {
+        map_blank: '{{ asset('bundles/romanlegion/assets/img/map/blank.PNG') }}',
+        map_county_names: '{{ asset('bundles/romanlegion/assets/img/map/county_names.PNG') }}'
+    };
+    var refLayers = {};
+    
+    $('#layers input').change(function() {
+        var id = $(this).attr('id');
+        if ($(this).is(':checked')) {
+            var img = svg.image(5, 5, 350, 290, mapLayers[$(this).attr('id')]);
+            svg.title(img, $(this).attr('id'));
+            refLayers[id] = img;
+        } else {
+            if (id in refLayers && refLayers[id]) {
+                svg.remove(refLayers[id]);
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

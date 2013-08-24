@@ -1,0 +1,49 @@
+{% extends "RomanLegionGameBundle::layout.html.twig" %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{{ asset('bundles/romanlegion/third-party/jqGrid/css/ui.jqgrid.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/romanlegion/third-party/jqGrid/jqGrid.overrides.css') }}"> 
+{% endblock %}
+
+{% block content_header '' %}
+
+{% block content %}
+<br />
+<div class="container">
+    <table id="availableProperties"></table>
+    <div id="availablePropertiesPager"></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+$("#availableProperties").jqGrid({
+    data: [
+        {
+            name: 'Dev Property',
+            cost: '$100',
+            location: 'Dev location',
+            stock: '11',
+            action: '(Buy Button)'
+        }
+    ],
+    datatype: "local",
+    height: 250,
+    rowNum: 10,
+    rowList: [10,20,30],
+    colNames:['Name', 'Cost', 'Location', 'Stock', 'Action'],
+    colModel:[
+        {name:'name',index:'name', width:200},
+        {name:'cost',index:'cost', width:50},
+        {name:'location',index:'location', width:200},
+        {name:'stock',index:'stock', width:100, sorttype:"int",search:true},
+        {name:'action',index:'action', width:200}
+    ],
+    pager: "#availablePropertiesPager",
+    viewrecords: true,
+    caption: "Available Properties",
+    hidegrid:false,
+    altRows: true                
+});
+</script>
+{% endblock %}

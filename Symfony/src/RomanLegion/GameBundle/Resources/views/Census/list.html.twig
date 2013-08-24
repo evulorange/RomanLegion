@@ -1,0 +1,42 @@
+{% extends "RomanLegionGameBundle::layout.html.twig" %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{{ asset('bundles/romanlegion/third-party/jqGrid/css/ui.jqgrid.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/romanlegion/third-party/jqGrid/jqGrid.overrides.css') }}"> 
+{% endblock %}
+
+{% block content_header '' %}
+
+{% block content %}
+<br />
+<div class="container">
+    <table id="census"></table>
+    <div id="censusPager"></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript">
+$("#census").jqGrid({
+    data: [
+        {position: 1, displayName: 'Jonathan', faction: 'Dev Legion'}
+    ],
+    datatype: "local",
+    height: 250,
+    rowNum: 10,
+    rowList: [10,20,30],
+    colNames:['Position', 'Name', 'Faction'],
+    colModel:[
+        {name:'position',index:'position', width:100, sorttype:"int",search:true},
+        {name:'displayName',index:'displayName', width:200},
+        {name:'faction',index:'faction', width:250}
+    ],
+    pager: "#censusPager",
+    viewrecords: true,
+    caption: "Census",
+    hidegrid:false,
+    altRows: true                
+});
+$("#census").jqGrid('filterToolbar',{defaultSearch:true,stringResult:true});
+</script>
+{% endblock %}
