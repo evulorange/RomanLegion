@@ -6,7 +6,7 @@ web1: #component type & number
   php_version: 5.4.14
   php_extensions:
     - mysql
-	- sqlite
+    - sqlite
     - gd
     - eaccelerator
      
