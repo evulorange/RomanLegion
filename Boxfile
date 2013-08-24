@@ -1,0 +1,20 @@
+web1: #component type & number
+  name: romanlegion            #component settings
+  shared_writable_dirs:
+    - Symfony/app/logs
+  document_root: Symfony/web
+  php_version: 5.4.14
+  php_extensions:
+    - mysql
+	- sqlite
+    - gd
+    - eaccelerator
+     
+db1: #component type & number 
+  name: romanlegion            #component settings
+  type: sqlite
+  type: mysql
+ 
+cache1:
+  name: sessions
+  type: memcached
