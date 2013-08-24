@@ -1,19 +1,40 @@
-web1: #component type & number
-  name: romanlegion            #component settings
+web1:
+  ################################################
+  ## GENERAL SETTINGS
+  ################################################
   shared_writable_dirs:
-    - Symfony/app/logs
-  document_root: Symfony
-  php_version: 5.4.14
+      - app/cache
+      - app/logs
+ 
+  ################################################
+  ## WEB SPECIFIC SETTINGS
+  ################################################
+  document_root: Symfony/web
+  default_gateway: app.php
+  index_list: [app.php]
+ 
+  ################################################
+  ## PHP SPECIFIC SETTINGS
+  ################################################
+  php_version: 5.3.5
   php_extensions:
+    - intl
+    - mbstring
+    - xsl
+    - apc
     - mysql
-    - sqlite
-    - gd
-    - eaccelerator
+    - posix
+    - iconv
+    - tokenizer
+    - xml
+    - pdo_sqlite
+  php_session_autostart: Off
+  php_short_open_tag: Off
+  magic_quotes_gpc: Off
      
 db1: #component type & number 
   name: romanlegion            #component settings
   type: sqlite
-  type: mysql
  
 cache1:
   name: sessions
