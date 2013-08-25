@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class CensusController extends Controller
 {
     /**
+	 * This is an expanded comment.
      * @Route("/census", name="_census_list")
      * @Template()
      */
