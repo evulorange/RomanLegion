@@ -81,10 +81,10 @@ class __TwigTemplate_9740a557578bbf51fbe2345d096d3cf6 extends Twig_Template
     colNames:['Name', 'Cost', 'Location', 'Stock', 'Action'],
     colModel:[
         {name:'name',index:'name', width:200},
-        {name:'cost',index:'type', width:50},
+        {name:'cost',index:'cost', width:50},
         {name:'location',index:'location', width:200},
-        {name:'stock',index:'size', width:100, sorttype:\"int\",search:true},
-        {name:'action',index:'player', width:200}
+        {name:'stock',index:'stock', width:100, sorttype:\"int\",search:true},
+        {name:'action',index:'action', width:200}
     ],
     pager: \"#availablePropertiesPager\",
     viewrecords: true,

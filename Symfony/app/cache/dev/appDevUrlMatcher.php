@@ -152,6 +152,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'RomanLegion\\GameBundle\\Controller\\HomeController::indexAction',  '_route' => 'romanlegion_game_home_index',);
         }
 
+        // romanlegion_game_home_test
+        if ($pathinfo === '/test') {
+            return array (  '_controller' => 'RomanLegion\\GameBundle\\Controller\\HomeController::testAction',  '_route' => 'romanlegion_game_home_test',);
+        }
+
         // _market_available
         if ($pathinfo === '/market') {
             return array (  '_controller' => 'RomanLegion\\GameBundle\\Controller\\MarketController::availableAction',  '_route' => '_market_available',);

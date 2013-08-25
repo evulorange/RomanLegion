@@ -16,4 +16,19 @@ class HomeController extends Controller
     {
         return array('name' => 'me');
     }
+    
+    /**
+     * @Route("/test")
+     * @Template()
+     */
+    public function testAction()
+    {
+        $test = new \RomanLegion\GameBundle\Entity\Account(
+            'Jonathan', 'password', 'Display Jonathan'
+        );
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($test);
+        $em->flush();
+        die('done');
+    }
 }
