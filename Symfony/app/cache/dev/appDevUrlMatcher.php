@@ -133,6 +133,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // _account_create
+        if ($pathinfo === '/account/create') {
+            return array (  '_controller' => 'RomanLegion\\GameBundle\\Controller\\AccountController::createAction',  '_route' => '_account_create',);
+        }
+
         // _census_list
         if ($pathinfo === '/census') {
             return array (  '_controller' => 'RomanLegion\\GameBundle\\Controller\\CensusController::listAction',  '_route' => '_census_list',);

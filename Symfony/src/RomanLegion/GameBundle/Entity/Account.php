@@ -30,6 +30,7 @@ class Account
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=30)
+     * 
      */
     private $username;
 
