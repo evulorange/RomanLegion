@@ -134,7 +134,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // _account_create
-        if ($pathinfo === '/account/create') {
+        if ($pathinfo === '/account/cameron') {
             return array (  '_controller' => 'RomanLegion\\GameBundle\\Controller\\AccountController::createAction',  '_route' => '_account_create',);
         }
 
@@ -165,6 +165,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // _market_available
         if ($pathinfo === '/market') {
             return array (  '_controller' => 'RomanLegion\\GameBundle\\Controller\\MarketController::availableAction',  '_route' => '_market_available',);
+        }
+
+        // _property_create
+        if ($pathinfo === '/property/create') {
+            return array (  '_controller' => 'RomanLegion\\GameBundle\\Controller\\PropertyController::createAction',  '_route' => '_property_create',);
         }
 
         // _senatus_list
